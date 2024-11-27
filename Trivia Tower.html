@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Tower</title>
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@400;600;700&family=Sarpanch:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@400;600;700&family=Sarpanch:wght@400;500;600;700;800;900&family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet">
+    <!--Style-->
+    <link rel="stylesheet" href="UI/Style/ingame.css">
+    <link rel="stylesheet" href="UI/Style/equipmentMenu.css">
+<style>
+    body {
+        background-color: #0B033F;
+        font-family: "Sarpanch", sans-serif;
+    }
+    .user-mechanism{
+        border: solid 1px black;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+    }
+    .quiz-container{
+        background-color: white;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+.Game-menu {
+    background-color: #0B033F;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 99; /* High z-index */
+    row-gap: 10px;
+}
+
+.title{
+    margin-top: -130px;
+    font-family: "Zen Tokyo Zoo", system-ui;
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.play-button{
+    background: #1987F2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100px;
+    border-radius: 100%;
+    padding: 10px 10px 10px 20px;
+    border: solid 1px white;
+    box-shadow:  0px 0px 12.6px #FFFFFF, 0px 0px 6.3px #FFFFFF;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.play-button:hover{
+    box-shadow: 0px 0px 40.2px #FFFFFF, 0px 0px 20.1px #FFFFFF, 0px 0px 12.6px #FFFFFF, 0px 0px 6.3px #FFFFFF;
+}
+
+.playIMG{
+    width: 100%;
+    filter: invert(1);
+}
+
+.other-option{
+    border: solid 1px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+
+}
+
+.credit{
+    font-size: 30px;
+    font-family: "Sarpanch", sans-serif;
+    cursor: pointer;
+}
+
+.about-game{
+    font-family: "Sarpanch", sans-serif;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.help{
+    font-family: "Sarpanch", sans-serif;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+.equipment-button{
+    font-family: "Sarpanch", sans-serif;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.equipment-menu{
+    background-color: #0B033F;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.equipTitle{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: center;
+    border: none;
+    width: 100%;
+}
+
+.equipmentDisplay{
+    border: solid 1px black;
+    position: fixed;
+    right: 20px;
+    left: 20px;
+    background-color: #1987F2;
+    top: 127px;
+    bottom: 0px;
+}
+
+.equipmentBack{
+    width: 60px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    border: none;
+    filter: invert(1)
+}
+
+.row1{
+    width: 100%;
+    height: 70px;
+    border: solid 1px white;
+}
+
+.row2{
+    width: 100%;
+    height: 70px;
+    border: solid 1px white;
+}
+
+.row3{
+    width: 100%;
+    height: 70px;
+    border: solid 1px white;
+}
+
+.bossTitle{
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+.enemyRow {
+    position: relative; /* This ensures that the minions move relative to the container */
+    width: 100%; /* Ensure the row takes the full width of its container */
+}
+
+.enemyRow .minion {
+    position: absolute;
+    right: 0; /* Position the minions at the right edge initially */
+    animation: moveMinion 5s ease-in-out forwards; /* Apply smooth animation */
+}
+
+@keyframes moveMinion {
+    0% {
+        transform: translateX(0); /* Start at the right edge */
+    }
+    100% {
+        transform: translateX(-900%); /* Move to the left edge */
+    }
+}
+
+.closeButton{
+    position: absolute;
+    border-radius: 100%;
+    border: solid 1px white;
+    background-color: #0B033F;
+    color:white;
+    padding: 10px;
+    right: -10px;
+    top: -20px;
+    cursor: pointer;
+}
+
+.aboutGame{
+    position: absolute;
+    z-index: 999;
+    background-color: white;
+    padding: 0px 10px;
+    border-radius: 10px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+}
+
+.creditBox{
+    position: absolute;
+    z-index: 999;
+    background-color: white;
+    padding: 0px 10px;
+    border-radius: 10px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+}
+
+.feedBack{
+    position: absolute;
+    z-index: 999;
+    background-color: white;
+    padding: 0px 10px;
+    border-radius: 10px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+}
+
+</style>
+</head>
+<body>
+    
+<div class="Game-menu">
+    <div class="title">
+        <img style="
+            width: 150px;
+            filter: 
+            drop-shadow(0px 0px 248.4px #FFFFFF) drop-shadow(0px 0px 144.9px #FFFFFF)
+            drop-shadow(0px 0px 5px #FFFFFF);
+            " src="UI/Image/menu/Castle.png">
+        <p style="
+            margin-top: 0px;
+            text-shadow: 0px 0px 50px #FFFFFF;
+        ">TRIVIA TOWER</p>
+        <p style="
+            margin-top: -30px;
+            font-size: 25px;
+            font-family: Sarpanch, sans-serif;
+        ">Are You Smart Enough For Play This Game?</p>
+    </div>
+    
+    <button class="play-button"><img class="playIMG" src="UI/Image/menu/playbutton.png"></button>
+    <div class="other-option">
+        <button class="help">Feedback?</button>
+        <button class="about-game"> About game </button>
+        <button class="credit">Credit</button>
+    </div>
+    <div>
+        <button class="equipment-button">Equipment</button>
+    </div>
+</div>
+
+<div class="creditBox">
+    <button class="closeButton">X</button>
+    <p>Raffael - Backend/Frontend</p>
+    <p>Ikhsan - Frontend</p>
+    <p>Tyo - UI/UX Designer</p>
+    <p><u>honorary mention: ChatGPT</u></p>
+</div>
+<div class="aboutGame">
+    <button class="closeButton">X</button>
+    <p>In Trivia Tower, you don't just rely on strength and weapons to defeat your enemies—you need wits as well! Every time you face an opponent, you're challenged to answer a quiz question. Your knowledge determines how effective your attacks are. Correct answers empower your character to unleash powerful strikes, while wrong answers can leave you vulnerable to enemy counterattacks!</p>
+</div>
+<div class="feedBack">
+    <button class="closeButton">X</button>
+    <p>Idgaf</p>
+</div>
+
+<div class="equipment-menu">
+    <button class="equipmentBack"><img style="
+        width: 100%;
+        cursor: pointer;
+        " src="UI/Image/menu/backbutton.png">
+        </button>
+    <div class="equipTitle">
+        <p>Equipment</p>
+    </div>
+    <div class="equipmentDisplay">
+        <div class="equipmentContainer">
+            <div class="equipmentName">Weapons</div>
+            <div class="equipmentDisplayInner weaponDisplay"></div>
+        </div>
+        <div class="equipmentContainer">
+            <div class="equipmentName">Armor</div>
+            <div class="equipmentDisplayInner armorDisplay"></div>
+        </div>
+        <div class="equipmentContainer">
+            <div class="equipmentName">Accessories</div>
+            <div class="equipmentDisplayInner accessoryDisplay"></div>
+        </div>
+    </div>
+    <div class="playerStats">
+        <p id="playerStats">Health: 250 | Defense: 100 | Power: 150</p>
+    </div>
+</div>
+
+<div class="header-top">
+    <p>
+        Wave 1
+    </p>
+</div>
+
+<div class="container">
+    <div>
+        <button class="back-button"><img style="
+            width: 100%;
+            cursor: pointer;
+            " src="UI/Image/menu/backbutton.png">
+        </button>
+    </div>
+    <div class="game-container">
+        <div class="player-container">
+            <p id="towerName" style="margin-left: 80px">Tower Name</p>
+            <div class="player">
+                <img class="tower-avatar" src="UI/Image/user/evil-tower.png">
+                <img class="user-avatar" src="UI/Image/user/warriorStick.png">
+            </div>
+            <div class="playerStat">
+                <p id="playerHP">HP:</p>
+                <p id="playerPower">Power:</p>
+                <p id="playerDefense">Defense:</p>
+                <div class="playerBuff">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="enemy-container">
+            <div class="bossTitle">
+                <p>BOSSSSSSSSS</p>
+            </div>
+            <div class="enemyRow">
+                <div class="row1">
+                    <img class="minion" src="UI/Image/enemy/minion.png">
+                </div>
+                <div class="row2">
+                    <img class="minion" src="UI/Image/enemy/minion.png">
+                </div>
+                <div class="row3">
+                    <img class="minion" src="UI/Image/enemy/minion.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="user-mechanism">
+        <div class="quiz-container">
+            <p id="question"></p>
+            <p id="option"></p>
+        </div>
+        <div class="option-container">
+            <button id="option1" class="option-button" onclick="optionButton()">
+                Attack
+            </button>
+            <button id="option2" class="option-button" onclick="optionButton()">
+                Regen
+            </button>
+            <button id="option3" class="option-button" onclick="optionButton()">
+                Ultimate
+            </button>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="UX/Script/user/userIndex.js"></script>
+<script type="module" src="UX/Script/main/quizIndex.js"></script>
+<script src="UX/Script/UI/DOM.js"></script>
+<script>
+
+
+
+</script>
+</body>
+</html>

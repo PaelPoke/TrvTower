@@ -1,0 +1,86 @@
+.equipment-menu {
+    background-color: lightblue;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.equipTitle {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: center;
+    border: solid 1px black;
+    width: 100%;
+}
+
+.equipmentDisplay {
+    border: solid 1px black;
+    position: fixed;
+    right: 20px;
+    left: 20px;
+    background-color: pink;
+    top: 127px;
+    bottom: 0px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.equipmentContainer {
+    margin: 10px;
+}
+
+.equipmentName {
+    background-color: white;
+    width: fit-content;
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-radius: 28px;
+    display: flex;
+    justify-content: center;
+}
+
+.equipmentDisplayInner {
+    border: solid 1px black;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.equipmentItem {
+    background-color: grey;
+    height: fit-content;
+    margin: 5px 0;
+    padding: 10px;
+    color: white;
+    border-radius: 8px;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.equipButton {
+    background-color: white;
+    color: black;
+    border: solid 1px black;
+    border-radius: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.equipButton:hover {
+    background-color: lightgray;
+}
+
+.playerStats {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+}
